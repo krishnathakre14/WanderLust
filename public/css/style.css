@@ -1,19 +1,21 @@
-
-```css
 body {
     font-family: "Varela Round", sans-serif !important;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    background-color: #fbfbfb;
 }
 
 .container {
     flex: 1;
 }
 
+/* Navbar */
+
 .navbar {
-    height: 5rem;
-    background-color: white;
+    min-height: 5rem;
+    background-color: #ffffff;
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.05);
 }
 
 .fa-compass {
@@ -23,6 +25,11 @@ body {
 
 .nav-link {
     color: #222222 !important;
+    font-weight: 500;
+}
+
+.nav-link:hover {
+    color: #fe424d !important;
 }
 
 /* Navbar Search */
@@ -31,59 +38,109 @@ body {
     background-color: #fe424d;
     color: #fff;
     border-radius: 25px;
-    padding: 0 1rem 0 1rem;
+    padding: 0.4rem 1.25rem;
+    border: none;
+    transition: background-color 0.2s ease-in-out;
 }
 
 .search-btn:hover {
-    background-color: #fe424d;
+    background-color: #e0323c;
     color: #fff;
 }
 
 .search-btn i {
     display: inline;
-    margin-right: 0.5rem;
+    margin-right: 0.4rem;
 }
 
 .search-inp {
     border-radius: 25px;
-    padding: 0.5rem 3rem 0.5rem 3rem;
-    font-size: 1rem;
+    padding: 0.5rem 1.25rem;
+    font-size: 0.95rem;
+    border: 1px solid #ced4da;
+}
+
+.search-inp:focus {
+    box-shadow: 0 0 0 0.2rem rgba(254, 66, 77, 0.25);
+    border-color: #fe424d;
 }
 
 /* Footer */
 
-.f-info-links a {
-    text-decoration: none;
-    color: #222222;
+footer {
+    background-color: #ebebeb;
+    margin-top: auto;
 }
 
-.f-info-links a:hover {
-    text-decoration: underline;
+.f-info {
+    text-align: center;
+    padding: 1.5rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
 }
 
 .f-info-links,
 .f-info-socials,
 .f-info-brand {
     width: 100%;
-    vertical-align: middle;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.f-info-socials i {
-    margin-right: 1rem;
-    font-size: 1.2rem;
+.f-info-links a {
+    text-decoration: none;
+    color: #222222;
+    margin: 0 0.5rem;
+    font-size: 0.9rem;
 }
 
-.f-info {
-    text-align: center;
-    height: 8rem;
-    background-color: #ebebeb;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: space-evenly;
+.f-info-links a:hover {
+    text-decoration: underline;
+    color: #fe424d;
+}
+
+.f-info-socials i {
+    margin: 0 0.5rem;
+    font-size: 1.3rem;
+    color: #222222;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.f-info-socials i:hover {
+    color: #fe424d;
+}
+
+.f-info-brand {
+    color: #6c757d;
+    font-size: 0.9rem;
+}
+
+@media (min-width: 768px) {
+    .f-info {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 1.5rem 2rem;
+    }
+
+    .f-info-brand {
+        order: 2;
+        width: auto;
+    }
+
+    .f-info-socials {
+        order: 1;
+        width: auto;
+    }
+
+    .f-info-links {
+        order: 3;
+        width: auto;
+    }
 }
 
 /* Cards */
@@ -91,16 +148,23 @@ body {
 .listing-card {
     border: none !important;
     margin-bottom: 2rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    background-color: transparent;
+}
+
+.listing-card:hover {
+    transform: translateY(-4px);
 }
 
 .card-img-top {
     border-radius: 1rem !important;
     width: 100% !important;
+    height: 18rem;
     object-fit: cover !important;
 }
 
 .card-body {
-    padding: 0 !important;
+    padding: 0.5rem 0 0 0 !important;
 }
 
 .card-text p {
@@ -112,33 +176,44 @@ body {
     color: inherit;
 }
 
-/* Card Effect */
+/* Card Hover Overlay Effect */
 
 .card-img-overlay {
     opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+    border-radius: 1rem;
 }
 
 .card-img-overlay:hover {
-    opacity: 0.2;
-    background-color: white;
+    opacity: 0.15;
+    background-color: #ffffff;
 }
 
-/* Buttons */
+/* Custom Buttons */
 
-.add-btn {
-    background-color: #fe424d !important;
-    border: none !important;
-}
-
+.add-btn,
 .edit-btn {
     background-color: #fe424d !important;
     border: none !important;
+    color: #ffffff !important;
+    transition: opacity 0.2s ease;
 }
 
-/* Map */
+.add-btn:hover,
+.edit-btn:hover {
+    opacity: 0.9;
+}
+
+/* Map Styling */
 
 #map {
-    height: 400px;
+    height: 300px;
     width: 100%;
+    border-radius: 0.75rem;
 }
-```
+
+@media (min-width: 768px) {
+    #map {
+        height: 400px;
+    }
+}
