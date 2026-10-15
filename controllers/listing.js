@@ -12,10 +12,62 @@ const geocodingClient = mbxGeocoding({ accessToken:mapToken});
         res.render("listings/new.ejs");
     };
 
-    module.exports.index = async (req, res) => {
-    const allListings = await Listing.find({});
-    res.render("listings/index.ejs", { allListings });
+    
+
+module.exports.index = async (req, res) => {
+    const { q, category } = req.query;
+
+    let filter = {};
+
+    // 1. Search by title, location, or country
+    if (q && q.trim()) {
+        const searchTerm = q.trim();
+
+        // Escape special regex characters
+        const escapedTerm = searchTerm.replace(
+            /[.*+?^${}()|[\]\\]/g,
+            "\\$&"
+        );
+
+        const searchRegex = new RegExp(escapedTerm, "i");
+
+        filter.$or = [
+            { title: searchRegex },
+            { location: searchRegex },
+            { country: searchRegex }
+        ];
+    }
+
+    // 2. Filter by category
+    const allowedCategories = [
+        "Trending",
+        "Rooms",
+        "Iconic Cities",
+        "Mountains",
+        "Castles",
+        "Amazing pools",
+        "Camping",
+        "Farms",
+        "Arctic",
+        "Domes",
+        "Boats"
+    ];
+
+    if (category && allowedCategories.includes(category)) {
+        filter.category = category;
+    }
+
+    // 3. Fetch matching listings
+    const allListings = await Listing.find(filter);
+
+    // 4. Send data to the EJS page
+    res.render("listings/index.ejs", {
+        allListings,
+        searchQuery: q || "",
+        selectedCategory: category || ""
+    });
 };
+
 
     module.exports.showListing = async (req, res) => {
     let { id } = req.params;

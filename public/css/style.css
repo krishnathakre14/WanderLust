@@ -217,3 +217,189 @@ footer {
         height: 400px;
     }
 }
+
+/* Category Filters */
+
+
+#filters {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    overflow-x: auto;
+    white-space: nowrap;
+    padding: 0.5rem 0 0.75rem;
+    scrollbar-width: none;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#filters::-webkit-scrollbar {
+    display: none;
+}
+
+
+#filters .filter {
+    display: block;
+    flex: 0 0 auto;
+    min-width: 75px;
+    margin: 0 0.5rem;
+    padding: 0.6rem 0.25rem;
+    text-align: center;
+    text-decoration: none;
+    color: #222;
+    opacity: 0.7;
+    border-bottom: 2px solid transparent;
+    transition: opacity 0.2s ease, border-color 0.2s ease;
+}
+
+#filters .filter:hover {
+    opacity: 1;
+    color: #fe424d;
+}
+
+#filters .filter.active {
+    opacity: 1;
+    border-bottom-color: #fe424d;
+}
+
+#filters .filter i {
+    display: block;
+    font-size: 1.25rem;
+    margin-bottom: 0.35rem;
+}
+
+#filters .filter p {
+    margin: 0;
+    font-size: 0.78rem;
+}
+
+/* Responsive Search Bar */
+
+@media (max-width: 576px) {
+    .navbar .search-inp {
+        min-width: 0;
+        width: 100%;
+    }
+
+    .navbar form[role="search"] {
+        width: 100%;
+        margin: 0.5rem 0;
+    }
+
+    .search-btn {
+        flex-shrink: 0;
+    }
+
+    .listing-card:hover {
+        transform: none;
+    }
+}
+
+
+/* Tax Toggle - Responsive Fix */
+
+.tax-toggle {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    max-width: 100%;
+    min-height: 3.25rem;
+    padding: 0.75rem 1rem;
+    margin: 1rem 0;
+    border: 1px solid #ddd;
+    border-radius: 1rem;
+    background-color: #fff;
+}
+
+.tax-toggle .form-check {
+    margin-bottom: 0;
+}
+
+.tax-toggle .form-check-label {
+    font-size: 0.85rem;
+    white-space: normal;
+}
+
+@media (max-width: 576px) {
+    .tax-toggle {
+        width: 100%;
+    }
+}
+
+
+/* Keep tax switch and text on one line */
+.tax-toggle .form-check-reverse {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding-left: 0;
+    margin: 0;
+}
+
+.tax-toggle .form-check-input {
+    float: none;
+    flex-shrink: 0;
+    margin: 0;
+}
+
+.tax-toggle .form-check-label {
+    white-space: nowrap;
+    margin: 0;
+}
+
+.tax-toggle {
+    width: fit-content;
+    max-width: 100%;
+    flex-shrink: 0;
+}
+
+@media (max-width: 576px) {
+    .tax-toggle {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+
+.tax-toggle {
+    display: inline-flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: center;
+    gap: 10px;
+    width: fit-content;
+    max-width: 100%;
+    padding: 12px 16px;
+    margin: 12px 0;
+    border: 1px solid #ddd;
+    border-radius: 16px;
+    background: #fff;
+    box-sizing: border-box;
+}
+
+.tax-toggle .form-check-input {
+    float: none !important;
+    margin: 0 !important;
+    flex-shrink: 0;
+}
+
+.tax-toggle label {
+    margin: 0 !important;
+    white-space: nowrap;
+    font-size: 14px;
+}
+
+@media (max-width: 576px) {
+    .tax-toggle {
+        max-width: 100%;
+        gap: 8px;
+        padding: 10px;
+    }
+
+    .tax-toggle label {
+        font-size: 12px;
+    }
+}
+
